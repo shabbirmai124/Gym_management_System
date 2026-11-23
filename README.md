@@ -118,20 +118,41 @@ A complete, modern, responsive Gym Management System built exclusively with **HT
 
 ---
 
-## Setup & Deployment
+## How to Run in XAMPP (Recommended for Local PHP + MySQL)
 
-### Option 1: PHP + MySQL Server (XAMPP / Apache / Nginx / LAMP)
-1. Import `schema.sql` into MySQL / phpMyAdmin to create the `gym_management` database and seed data.
-2. Update database credentials in `config.php` (or set `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASS` environment variables).
-3. Place the project folder in your web root (e.g. `htdocs/gym/`) or run PHP's built-in server:
-   ```bash
-   php -S localhost:8080
-   ```
-4. Open `http://localhost:8080`.
+This project is pre-configured to work out-of-the-box with **XAMPP** (default `root` user with an empty password in `config.php`).
 
-### Option 2: AI Studio Preview Runner
-```bash
-npm install
-npm run dev
-```
-Runs `server.js` on `http://0.0.0.0:3000`, serving `index.html`, `styles.css`, and `app.js` and handling `api.php?action=...` endpoints in-memory where PHP/MySQL binaries are not installed.
+1. **Install & Start XAMPP**
+   - Open the **XAMPP Control Panel** and click **Start** for both **Apache** and **MySQL**.
+2. **Copy Project Files into `htdocs`**
+   - Copy the entire project folder into your XAMPP `htdocs` directory:
+     - **Windows:** `C:\xampp\htdocs\gym-management\`
+     - **macOS:** `/Applications/XAMPP/htdocs/gym-management/`
+     - **Linux:** `/opt/lampp/htdocs/gym-management/`
+3. **Import the MySQL Database (`schema.sql`)**
+   - Open **`http://localhost/phpmyadmin`** in your browser.
+   - Click the **Import** tab at the top.
+   - Click **Choose File** and select `schema.sql` from your `gym-management` folder, then click **Import / Go**.
+   - This automatically creates the `gym_management` database, all 12 tables, foreign keys, and seeded demo accounts.
+4. **Verify `config.php` (Optional)**
+   - Default XAMPP settings (`127.0.0.1`, port `3306`, database `gym_management`, user `root`, password `""`) are already set in `config.php`. Update them only if you changed your MySQL port or root password.
+5. **Launch the Website**
+   - Open **`http://localhost/gym-management/`** in your browser.
+   - Sign in using any seeded account (e.g., `admin1` / `password1`, `staff1` / `staffpass1`, or `johndoe` / `johndoe123`), or click **Member Sign Up** to create a new member.
+
+---
+
+### Alternative Run Options
+
+- **PHP Built-in Server (with MySQL running):**
+  ```bash
+  php -S localhost:8080
+  ```
+  Then open `http://localhost:8080`.
+- **AI Studio Preview Runner (Node.js in-memory mode):**
+  ```bash
+  npm install
+  npm run dev
+  ```
+  Runs `server.js` on `http://0.0.0.0:3000`, serving `index.html`, `styles.css`, and `app.js` and handling `api.php?action=...` endpoints in-memory where PHP/MySQL binaries are not installed.
+
