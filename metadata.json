@@ -1,0 +1,5 @@
+{
+  "name": "Gym Management System",
+  "description": "Full-featured Gym Management System migrated from Oracle APEX SQL schema, supporting members, plans, attendance, equipment, staff, announcements, reminders, and transactions.",
+  "requestFramePermissions": []
+}

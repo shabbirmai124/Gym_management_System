@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gym Management System</title>
+    <meta
+      name="description"
+      content="Gym Management System for managing members, membership plans, attendance, equipment, staff, announcements, reminders, and transactions."
+    />
+    <meta property="og:title" content="Gym Management System" />
+    <meta
+      property="og:description"
+      content="Gym Management System for managing members, membership plans, attendance, equipment, staff, announcements, reminders, and transactions."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Authentication Screen -->
+    <section id="auth-view" class="auth-shell">
+      <div class="auth-hero">
+        <div class="brand-row">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11"/><path d="M6.5 17.5h11"/><path d="M3 10v4"/><path d="M21 10v4"/><path d="M6 7v10"/><path d="M18 7v10"/><path d="M12 6.5v11"/></svg>
+          </div>
+          <div>
+            <div class="brand-name">IronCore</div>
+            <div class="brand-sub">Gym Management System</div>
+          </div>
+        </div>
+
+        <div class="hero-copy">
+          <h1>Unified Operations for Modern Fitness Facilities</h1>
+          <p>
+            Manage member enrollments, membership rate plans, daily check-in attendance,
+            equipment inventory, staff rosters, announcements, reminders, and payment
+            transactions from one streamlined workspace.
+          </p>
+          <div class="hero-features">
+            <div>✓ Member &amp; Plan Tracking</div>
+            <div>✓ Live Attendance Check-In</div>
+            <div>✓ Equipment Asset Ledger</div>
+            <div>✓ Payments &amp; Reminders</div>
+          </div>
+        </div>
+
+        <div class="hero-footer">
+          HTML5 • CSS3 • JavaScript • PHP PDO • MySQL SQL
+        </div>
+      </div>
+
+      <div class="auth-panel">
+        <div class="auth-box">
+          <h2 id="auth-heading">Sign in to your account</h2>
+          <p id="auth-subtitle" class="muted-text">
+            Choose a role and enter your credentials or pick a seeded account below.
+          </p>
+
+          <div class="mode-toggle">
+            <button type="button" id="tab-login" class="mode-btn active">Sign In</button>
+            <button type="button" id="tab-register" class="mode-btn">Member Sign Up</button>
+          </div>
+
+          <div id="auth-error" class="alert-error hidden"></div>
+
+          <form id="auth-form" class="stack-form">
+            <div id="register-fields" class="hidden">
+              <div class="form-group">
+                <label for="reg-fullname">Full Name</label>
+                <input id="reg-fullname" class="input" type="text" placeholder="Alex Morgan" />
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="reg-contact">Contact Number</label>
+                  <input id="reg-contact" class="input" type="text" placeholder="555-0199" />
+                </div>
+                <div class="form-group">
+                  <label for="reg-rate">Membership Plan</label>
+                  <select id="reg-rate" class="input"></select>
+                </div>
+              </div>
+            </div>
+
+            <div id="role-field" class="form-group">
+              <label>Account Role</label>
+              <div class="role-tabs">
+                <button type="button" class="role-btn active" data-role="admin">Admin</button>
+                <button type="button" class="role-btn" data-role="staff">Staff</button>
+                <button type="button" class="role-btn" data-role="member">Member</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="auth-username">Username</label>
+              <input id="auth-username" class="input" type="text" value="admin1" required />
+            </div>
+
+            <div class="form-group">
+              <label for="auth-password">Password</label>
+              <input id="auth-password" class="input" type="password" value="password1" required />
+            </div>
+
+            <button type="submit" id="auth-submit-btn" class="btn btn-primary btn-full">
+              Sign In →
+            </button>
+          </form>
+
+          <div id="demo-accounts" class="demo-box">
+            <div class="demo-title">Quick-Fill Seeded Demo Accounts</div>
+            <button type="button" class="demo-card" data-role="admin" data-user="admin1" data-pass="password1">
+              <div class="demo-head"><strong>Admin</strong><code>admin1 / password1</code></div>
+              <span>Full control over members, plans, staff, equipment &amp; billing</span>
+            </button>
+            <button type="button" class="demo-card" data-role="staff" data-user="staff1" data-pass="staffpass1">
+              <div class="demo-head"><strong>Staff (Trainer)</strong><code>staff1 / staffpass1</code></div>
+              <span>Manage daily attendance, members, equipment &amp; payments</span>
+            </button>
+            <button type="button" class="demo-card" data-role="member" data-user="johndoe" data-pass="johndoe123">
+              <div class="demo-head"><strong>Member</strong><code>johndoe / johndoe123</code></div>
+              <span>View membership plan, attendance check-ins, reminders &amp; receipts</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Dashboard Shell -->
+    <section id="app-view" class="app-shell hidden">
+      <div id="mobile-overlay" class="mobile-overlay hidden"></div>
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-icon sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11"/><path d="M6.5 17.5h11"/><path d="M3 10v4"/><path d="M21 10v4"/><path d="M6 7v10"/><path d="M18 7v10"/><path d="M12 6.5v11"/></svg>
+          </div>
+          <div>
+            <div class="sidebar-title">IronCore Gym</div>
+            <div class="sidebar-sub">Management System</div>
+          </div>
+        </div>
+
+        <nav id="nav-list" class="nav-list"></nav>
+
+        <div class="sidebar-footer">
+          <div id="user-badge" class="user-card"></div>
+          <button type="button" id="logout-btn" class="btn-signout">Sign Out</button>
+        </div>
+      </aside>
+
+      <div class="main-area">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button type="button" id="menu-toggle" class="menu-btn" aria-label="Toggle Menu">☰</button>
+            <div>
+              <h1 id="page-title">Dashboard</h1>
+              <p id="page-subtitle" class="topbar-sub"></p>
+            </div>
+          </div>
+          <button type="button" id="refresh-btn" class="btn btn-ghost btn-sm">↻ Refresh</button>
+        </header>
+
+        <main id="main-content" class="content"></main>
+      </div>
+    </section>
+
+    <!-- Reusable Modal -->
+    <div id="modal-backdrop" class="modal-backdrop hidden">
+      <div class="modal-box" role="dialog" aria-modal="true">
+        <div class="modal-head">
+          <h3 id="modal-title">Dialog</h3>
+          <button type="button" id="modal-close" class="btn btn-ghost btn-sm">✕</button>
+        </div>
+        <div id="modal-body" class="modal-body"></div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
